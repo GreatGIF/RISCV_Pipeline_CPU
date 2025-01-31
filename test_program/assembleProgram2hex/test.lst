@@ -1,0 +1,25 @@
+
+./test.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	00000117          	auipc	sp,0x0
+   4:	00010113          	mv	sp,sp
+
+00000008 <main>:
+   8:	00000293          	li	t0,0
+   c:	00128293          	addi	t0,t0,1
+  10:	00000113          	li	sp,0
+  14:	00512023          	sw	t0,0(sp) # 0 <_start>
+  18:	00100193          	li	gp,1
+  1c:	00012283          	lw	t0,0(sp)
+  20:	00519463          	bne	gp,t0,28 <fail>
+  24:	0080006f          	j	2c <pass>
+
+00000028 <fail>:
+  28:	00000063          	beqz	zero,28 <fail>
+
+0000002c <pass>:
+  2c:	00000063          	beqz	zero,2c <pass>
